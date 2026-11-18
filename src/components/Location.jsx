@@ -1,0 +1,7 @@
+import {MapPin,Navigation} from 'lucide-react';import {site,addressLine} from '../config/site';import Hours from './Hours';import SectionTitle from './SectionTitle';
+export default function Location(){const q=encodeURIComponent(addressLine());
+return <section id="localizacao" className="py-20 bg-panel/50"><div className="wrap"><SectionTitle kicker="Onde estamos" title="Localização e horários"/>
+<div className="grid lg:grid-cols-2 gap-6"><div className="flex flex-col gap-4"><div className="rounded-3xl border border-line bg-panel p-6"><h3 className="font-serif text-xl flex items-center gap-2 mb-3"><MapPin className="text-gold" size={20}/>Endereço</h3>
+<p>{site.address.street}</p><p className="text-zinc-400">{site.address.district} · {site.address.city}</p>
+<div className="flex flex-wrap gap-3 mt-5"><a className="btn btn-gold" target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${q}`}><Navigation size={18}/>Como chegar</a><a className="btn btn-line" target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/search/?api=1&query=${q}`}>Abrir no Google Maps</a></div></div><Hours/></div>
+<iframe title="Mapa da localização da barbearia" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full h-80 lg:h-full min-h-80 rounded-3xl border border-line" src={`https://www.google.com/maps?q=${q}&output=embed`}/></div></div></section>}
